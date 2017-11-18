@@ -13,7 +13,7 @@ correr en tu terminal:
 ```
 git clone git@github.com:yeion7/workshop-react.git
 cd workshop-react
-npm run install
+npm install
 npm run dev
 ```
 
