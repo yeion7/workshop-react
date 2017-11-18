@@ -6,12 +6,25 @@ import withData from '../../../lib/withData';
 import { GET_ALL_MOVIES } from '../../../querys';
 import { UPDATE_DATE_MOVIE, DELETE_MOVIE } from '../../../mutations';
 
-const Movie = ({ name, rate, year, id, setRate, deleteMovie }) => (
+const Movie = ({
+  name,
+  rate,
+  year,
+  id,
+  setRate,
+  deleteMovie,
+  imagen,
+  trailer
+}) => (
   <div className="container">
+    <img src={imagen} alt={`banner of ${name}`} />
+
+    <h4 className="title">
+      {name.toLocaleUpperCase()}({year})
+    </h4>
     <small style={{ color: 'red', cursor: 'pointer' }} onClick={deleteMovie}>
       Eliminar
     </small>
-    <h2 className="title">{name.toLocaleUpperCase()}</h2>
     <div className="info">
       <span>
         Rate:
@@ -23,7 +36,7 @@ const Movie = ({ name, rate, year, id, setRate, deleteMovie }) => (
           <option value="5">5</option>
         </select>
       </span>
-      <span>Año: {year}</span>
+      <a href={`https://www.youtube.com/watch?v=${trailer}`}>ver trailer</a>
     </div>
     {/* CSSinJS */}
     <style jsx>{`
@@ -31,6 +44,7 @@ const Movie = ({ name, rate, year, id, setRate, deleteMovie }) => (
         border: 1px solid #ccc;
         border-radius: 4px;
         max-width: 320px;
+        min-width: 320px;
         margin: 5px;
         padding: 10px;
         text-align: center;
@@ -41,6 +55,15 @@ const Movie = ({ name, rate, year, id, setRate, deleteMovie }) => (
         display: flex;
         justify-content: space-between;
       }
+
+      img {
+        display: block;
+        max-width: 330px;
+        max-height: 195px;
+        width: auto;
+        height: auto;
+        margin: 0 auto;
+      }
     `}</style>
   </div>
 );
@@ -49,14 +72,18 @@ const MoviesContainer = props => {
   if (props.data.loading) {
     return <div>loading...</div>;
   } else {
-    return props.data.allMovies.map(movie => (
-      <Movie
-        key={movie.id}
-        {...movie}
-        setRate={rate => props.setRate(movie.id, rate)}
-        deleteMovie={() => props.deleteMovie(movie.id)}
-      />
-    ));
+    return (
+      <div style={{ display: 'flex', flexWrap: 'wrap' }}>
+        {props.data.allMovies.map(movie => (
+          <Movie
+            key={movie.id}
+            {...movie}
+            setRate={rate => props.setRate(movie.id, rate)}
+            deleteMovie={() => props.deleteMovie(movie.id)}
+          />
+        ))}
+      </div>
+    );
   }
 };
 
