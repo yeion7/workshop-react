@@ -36,7 +36,13 @@ const Movie = ({
           <option value="5">5</option>
         </select>
       </span>
-      <a href={`https://www.youtube.com/watch?v=${trailer}`}>ver trailer</a>
+      <a
+        href={`https://www.youtube.com/watch?v=${trailer}`}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        ver trailer
+      </a>
     </div>
     {/* CSSinJS */}
     <style jsx>{`

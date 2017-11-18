@@ -8,6 +8,7 @@ export const GET_ALL_MOVIES = gql`
       rate
       year
       imagen
+      trailer
     }
   }
 `;
@@ -19,7 +20,8 @@ export const SEARCH_MOVIE = gql`
       name
       rate
       year
-      image
+      imagen
+      trailer
     }
   }
 `;
