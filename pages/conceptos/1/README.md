@@ -10,6 +10,7 @@ Podemos dividir los componentes en dos tipos,
 # Lectura:
 
 * https://reactjs.org/docs/thinking-in-react.html
+* https://reactjs.org/docs/hello-world.html
 
 # Tips:
 
